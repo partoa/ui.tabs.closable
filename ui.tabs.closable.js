@@ -40,13 +40,13 @@ $.extend($.ui.tabs.prototype, {
                         )
                         .click(function() {
                             var index = self.lis.index($(this).parent());
-                            $($(this).prev('a').attr('href')).remove();
                             if (index > -1) {
                                 // call _trigger to see if remove is allowed
                                 if (false === self._trigger("closableClick", null, self._ui( $(self.lis[index]).find( "a" )[ 0 ], self.panels[index] ))) return;
 
                                 // remove this tab
-                                self.remove(index)
+                                self.remove(index);
+                                $($(this).prev('a').attr('href')).remove();
                             }
 
                             // don't follow the link
